@@ -1,5 +1,6 @@
 import requests
 import os
+import json
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 from selenium import webdriver
@@ -70,17 +71,15 @@ if not os.path.exists(CACHE_FOLDER):
     os.makedirs(CACHE_FOLDER)
 # Ensure that the cache folder exists
 
-def save_to_file(data, filename='output.txt', words_per_line=5, directory='.'):
-    words = data.split()
-    formatted_text = '\n'.join(' '.join(words[i:i+words_per_line]) for i in range(0, len(words), words_per_line))
+def save_to_file(data, filename='output.json', directory='.'):
     filepath = os.path.join(directory, filename)
     with open(filepath, 'w', encoding='utf-8') as file:
-        file.write(formatted_text)
+        json.dump(data, file, ensure_ascii=False, indent=4)
 
 # Example usage with a documentation URL
 docs_url = "https://microsoft.github.io/autogen/docs/Getting-Started"
 result = extract_job_information(docs_url)
 
 # Specify the directory where you want to save the file
-save_directory = 'E:\Ai_Systems\pythonwebscraper\output'
-save_to_file(result, 'output.txt', words_per_line=5, directory=save_directory)
+save_directory = 'E:\\Ai_Systems\\pythonwebscraper\\output'
+save_to_file(result, 'output.json', directory=save_directory)
