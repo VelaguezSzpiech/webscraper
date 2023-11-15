@@ -21,7 +21,6 @@ This is a Python script that scrapes information from a web page and its linked 
 - Specify the URL of the web page you want to scrape as `docs_url`
 - Specify the directory where you want to save the output file as `save_directory`
 - The script will extract the text from the main page and the linked pages, and save it as a JSON file in the output directory
-- The script will also create a cache folder and store the results with a hash of the URL as the filename
 - If the cache file exists and is valid, the script will use the cached result instead of scraping the web page again
 
 ## License
